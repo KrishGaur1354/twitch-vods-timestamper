@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitch VOD Timestamp</title>
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #9146FF; /* Twitch purple as primary text color */
+            font-family: 'Courier New', monospace;
+            line-height: 1.4;
+            margin: 0;
+            padding: 0;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            border-bottom: 1px solid #2A2A2A;
+            padding: 10px;
+            background-color: #111;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #00ffff; /* Cyan accent for logo */
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: #9146FF;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            color: #00ffff; /* Cyan hover effect */
+            text-decoration: underline;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .ascii-art {
+            white-space: pre;
+            line-height: 1.2;
+            margin: 20px 0;
+            overflow: auto;
+            color: #00ffff; /* Cyan ASCII art */
+        }
+
+        .feature-box {
+            border: 1px solid #2A2A2A;
+            background-color: #111;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .feature-title {
+            color: #00ffff; /* Cyan for feature titles */
+            font-weight: bold;
+            margin-bottom: 10px;
+            border-bottom: 1px dashed #2A2A2A;
+            padding-bottom: 5px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #00ffff; /* Cyan buttons */
+            color: #000;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            background-color: #00e6e6; /* Darker cyan hover */
+        }
+
+        footer {
+            border-top: 1px solid #2A2A2A;
+            padding: 10px;
+            text-align: center;
+            font-size: 12px;
+            color: #777;
+            margin-top: 30px;
+        }
+
+        .timestamp {
+            color: #00ffff; /* Cyan timestamps */
+        }
+
+        .terminal {
+            background-color: #111;
+            border: 1px solid #3a3a3a;
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+        .terminal-header {
+            border-bottom: 1px solid #3a3a3a;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+            color: #777;
+        }
+
+        .command {
+            color: #9146FF; /* Purple commands */
+        }
+
+        .command::before {
+            content: "$ ";
+            color: #00ffff; /* Cyan prompt */
+        }
+
+        .response {
+            color: #cccccc;
+            margin-left: 10px;
+        }
+
+        #docs, #faq {
+            display: none;
+        }
+
+        #docs:target, #faq:target {
+            display: block;
+        }
+
+        .home {
+            display: block;
+        }
+
+        #docs:target ~ .home, #faq:target ~ .home {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">Twitch VOD Timestamp</div>
+            <nav>
+                <a href="#">Home</a>
+                <a href="#">Install</a>
+                <a href="#docs">Docs</a>
+                <a href="#faq">FAQ</a>
+                <a href="#">Github</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div id="docs">
+            <div class="feature-box">
+                <div class="feature-title">$ cat documentation.md</div>
+                <h2>Documentation</h2>
+                <h3>Getting Started</h3>
+                <p>Twitch VOD Timestamp is a command-line tool for creating, managing, and sharing timestamps from Twitch VODs.</p>
+                
+                <h3>Basic Commands</h3>
+                <div class="terminal">
+                    <div class="command">timestamp add "Description" --vod VODID</div>
+                    <div class="response">Adds a timestamp at the current position</div>
+                    
+                    <div class="command">timestamp list</div>
+                    <div class="response">Lists all timestamps for the current VOD</div>
+                    
+                    <div class="command">timestamp export --format FORMAT</div>
+                    <div class="response">Exports timestamps to specified format (markdown, json, csv)</div>
+                </div>
+                
+                <h3>Configuration</h3>
+                <p>Create a .timestamprc file in your home directory to customize default behavior:</p>
+                <div class="terminal">
+                    <div class="response">
+                        {<br>
+                        &nbsp;&nbsp;"defaultFormat": "markdown",<br>
+                        &nbsp;&nbsp;"autoExport": true,<br>
+                        &nbsp;&nbsp;"exportPath": "~/Documents/timestamps/"<br>
+                        }
+                    </div>
+                </div>
+                
+                <h3>API Integration</h3>
+                <p>For developers wanting to integrate with the Timestamp API:</p>
+                <div class="terminal">
+                    <div class="command">timestamp api-key generate</div>
+                    <div class="response">Generates a new API key for external applications</div>
+                </div>
+                
+                <a href="#" class="cta-button">Back to Home</a>
+            </div>
+        </div>
+
+        <div id="faq">
+            <div class="feature-box">
+                <div class="feature-title">$ cat faq.txt | less</div>
+                <h2>Frequently Asked Questions</h2>
+                
+                <h3>Q: Does this work with live streams or only VODs?</h3>
+                <p>A: The tool works primarily with VODs, but you can use the --live flag to timestamp live streams which will be converted to VOD timestamps when the stream ends.</p>
+                
+                <h3>Q: Can I share timestamps directly to social media?</h3>
+                <p>A: Yes! Use the --share flag followed by the platform name:</p>
+                <div class="terminal">
+                    <div class="command">timestamp share --platform discord</div>
+                    <div class="response">Discord-formatted link copied to clipboard!</div>
+                </div>
+                
+                <h3>Q: Is there a limit to how many timestamps I can create?</h3>
+                <p>A: No, there is no limit to the number of timestamps you can create per VOD.</p>
+                
+                <h3>Q: Does this work on all operating systems?</h3>
+                <p>A: Yes, we support Windows, macOS, and Linux.</p>
+                
+                <h3>Q: Can I categorize or tag my timestamps?</h3>
+                <p>A: Absolutely! Use the --tag flag to add categories:</p>
+                <div class="terminal">
+                    <div class="command">timestamp add "Epic play" --tag highlight,gameplay</div>
+                    <div class="response">Timestamp added with tags: highlight, gameplay</div>
+                </div>
+                
+                <a href="#" class="cta-button">Back to Home</a>
+            </div>
+        </div>
+
+        <div class="home">
+            <div class="terminal">
+                <div class="terminal-header">twitch@vod-timestamp:~$</div>
+                <div class="command">./twitch-vod-timestamp --version</div>
+                <div class="response">TwitchVODTimestamp v1.0.2 - Your best companion for stream timestamps</div>
+            </div>
+
+            <div class="ascii-art">
+                _____          _ _       _      __     _____  ____             
+                |_   _|_      _(_) |_ ___| |__   \ \   / / _ \|  _ \            
+                  | | \ \ /\ / / | __/ __| '_ \   \ \ / / | | | | | |           
+                  | |  \ V  V /| | || (__| | | |   \ V /| |_| | |_| |           
+                 _|_|_ _\_/\_/ |_|\__\___|_| |_|    \_/  \___/|____/            
+                |_   _(_)_ __ ___   ___  ___| |_ __ _ _ __ ___  _ __   ___ _ __ 
+                  | | | | '_ ` _ \ / _ \/ __| __/ _` | '_ ` _ \| '_ \ / _ \ '__|
+                  | | | | | | | | |  __/\__ \ || (_| | | | | | | |_) |  __/ |   
+                  |_| |_|_| |_| |_|\___||___/\__\__,_|_| |_| |_| .__/ \___|_|   
+                                                               |_|                  
+        </div>
+
+            <p>Never miss a highlight moment in your favorite Twitch streams again. Twitch VOD Timestamp lets you mark, tag, and share timestamp references with laser precision.</p>
+
+            <div class="feature-box">
+                <div class="feature-title">$ cat features.txt</div>
+                <ul>
+                    <li>Create timestamps with a single hotkey while watching VODs</li>
+                    <li>Auto-generate markdown links for Reddit, Discord, or other platforms</li>
+                    <li>Export all timestamps to various formats (JSON, TXT, CSV)</li>
+                    <li>Search through your timestamp collection with regex support</li>
+                    <li>Tag and categorize moments (kills, fails, funny moments, etc.)</li>
+                </ul>
+            </div>
+
+            <div class="feature-box">
+                <div class="feature-title">$ cat example_usage.log</div>
+                <div class="terminal">
+                    <div class="command">timestamp add "Amazing play by Shroud" --vod 123456789</div>
+                    <div class="response">Timestamp created at <span class="timestamp">01:23:45</span></div>
+                    <div class="command">timestamp list --recent 3</div>
+                    <div class="response">
+                        [<span class="timestamp">01:23:45</span>] Amazing play by Shroud<br>
+                        [<span class="timestamp">01:02:22</span>] Hilarious donation message<br>
+                        [<span class="timestamp">00:45:10</span>] Beginning of the match
+                    </div>
+                    <div class="command">timestamp export --format markdown</div>
+                    <div class="response">Timestamps exported to timestamps_123456789.md</div>
+                </div>
+            </div>
+
+            <div class="feature-box">
+                <div class="feature-title">$ grep "Installation" README.md</div>
+                <div class="terminal">
+                    <div class="response">
+                        ## Installation<br><br>
+                        
+                        ```bash<br>
+                        # Using npm<br>
+                        npm install -g twitch-vod-timestamp<br><br>
+                        
+                        # Or download the binary from GitHub releases<br>
+                        chmod +x ./twitch-vod-timestamp<br>
+                        ./twitch-vod-timestamp --setup<br>
+                        ```
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature-box">
+                <div class="feature-title">$ echo "Testimonials" | cowsay</div>
+                <div class="terminal">
+                    <div class="response">
+                     _______________<br>
+                    < Testimonials ><br>
+                     ---------------<br>
+                            \   ^__^<br>
+                             \  (oo)\_______<br>
+                                (__)\       )\/\<br>
+                                    ||----w |<br>
+                                    ||     ||<br><br>
+                        
+                        "This tool has completely changed how I reference VODs in my Discord." - xQc<br><br>
+                        
+                        "I use Twitch VOD Timestamp for all my YouTube highlights editing." - Ludwig<br><br>
+                        
+                        "Simple, clean interface with powerful features." - @TwitchDevs<br><br>
+                        
+                        "I built this tool to solve my own streaming problems. It's transformed how I create content." - Krish Gaur, Developer
+                    </div>
+                </div>
+            </div>
+
+            <a href="#" class="cta-button">Download v1.0.2</a>
+            <a href="#" class="cta-button">View on GitHub</a>
+        </div>
+    </div>
+
+    <footer>
+        Twitch VOD Timestamp | Version 1.0.2 | MIT License | © 2025<br>
+        <span style="color: #9146FF">root@vod-timestamp:~$ echo "Made with &lt;3 for the Twitch community"</span>
+    </footer>
+</body>
+</html>

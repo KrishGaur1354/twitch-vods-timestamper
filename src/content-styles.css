@@ -1,0 +1,207 @@
+/* Main panel */
+.twitch-timestamper-panel {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  width: 400px;
+  background-color: #18181b;
+  border-radius: 4px;
+  color: #efeff1;
+  font-family: 'Inter', 'Roobert', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 9000;
+  max-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #303032;
+}
+
+/* Header */
+.twitch-timestamper-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: #1f1f23;
+  border-radius: 4px 4px 0 0;
+  border-bottom: 1px solid #303032;
+}
+
+.twitch-timestamper-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #efeff1;
+}
+
+.twitch-timestamper-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* Content area */
+.twitch-timestamper-content {
+  padding: 10px 15px;
+  overflow-y: auto;
+  max-height: calc(70vh - 50px);
+}
+
+/* Input container */
+.twitch-timestamper-input-container {
+  margin-bottom: 15px;
+  display: flex;
+  gap: 8px;
+}
+
+#timestamp-title {
+  flex-grow: 1;
+  padding: 8px 12px;
+  background-color: #303032;
+  border: 1px solid #3a3a3d;
+  border-radius: 4px;
+  color: #efeff1;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+#timestamp-title:focus {
+  border-color: #9147ff;
+}
+
+/* List header */
+.twitch-timestamper-list-header {
+  display: grid;
+  grid-template-columns: 80px 1fr 120px;
+  padding: 8px 10px;
+  background-color: #1f1f23;
+  border-radius: 4px 4px 0 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: #adadb8;
+  text-transform: uppercase;
+}
+
+/* Timestamp list */
+.twitch-timestamper-list {
+  max-height: 400px;
+  overflow-y: auto;
+  background-color: #18181b;
+  border-radius: 0 0 4px 4px;
+  border: 1px solid #303032;
+  border-top: none;
+}
+
+/* Empty state */
+.twitch-timestamper-empty {
+  padding: 20px;
+  text-align: center;
+  color: #adadb8;
+  font-size: 14px;
+}
+
+/* Timestamp item */
+.twitch-timestamper-item {
+  display: grid;
+  grid-template-columns: 80px 1fr 120px;
+  padding: 8px 10px;
+  border-bottom: 1px solid #303032;
+  align-items: center;
+  transition: background-color 0.2s;
+}
+
+.twitch-timestamper-item:hover {
+  background-color: #26262c;
+}
+
+.twitch-timestamper-item:last-child {
+  border-bottom: none;
+}
+
+.twitch-timestamper-time {
+  font-family: monospace;
+  color: #dedee3;
+}
+
+.twitch-timestamper-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.twitch-timestamper-item-actions {
+  display: flex;
+  gap: 4px;
+  justify-content: flex-end;
+}
+
+/* Buttons */
+.twitch-timestamper-btn {
+  background-color: #3a3a3d;
+  color: #efeff1;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.twitch-timestamper-btn:hover {
+  background-color: #464649;
+}
+
+.twitch-timestamper-primary {
+  background-color: #9147ff;
+}
+
+.twitch-timestamper-primary:hover {
+  background-color: #772ce8;
+}
+
+.twitch-timestamper-jump {
+  background-color: #3a3a3d;
+}
+
+.twitch-timestamper-jump:hover {
+  background-color: #464649;
+}
+
+.twitch-timestamper-copy {
+  background-color: #3a3a3d;
+}
+
+.twitch-timestamper-copy:hover {
+  background-color: #464649;
+}
+
+.twitch-timestamper-delete {
+  background-color: #3a3a3d;
+  color: #ff8280;
+}
+
+.twitch-timestamper-delete:hover {
+  background-color: #464649;
+}
+
+/* Notification */
+.twitch-timestamper-notification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #9147ff;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 4px;
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 9999;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.twitch-timestamper-notification.show {
+  transform: translateY(0);
+  opacity: 1;
+}

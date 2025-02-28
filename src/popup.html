@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Twitch VOD Timestamper</title>
+  <link rel="stylesheet" href="popup-styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>VOD Timestamps</h1>
+    </header>
+    
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="recent">Recent VODs</button>
+      <button class="tab-btn" data-tab="all">All VODs</button>
+      <button class="tab-btn" data-tab="settings">Settings</button>
+    </div>
+    
+    <div class="tab-content active" id="recent-tab">
+      <div class="search">
+        <input type="text" id="search-recent" placeholder="Search VODs...">
+      </div>
+      <div class="vod-list" id="recent-vods">
+        <div class="loading">Loading VODs...</div>
+      </div>
+    </div>
+    
+    <div class="tab-content" id="all-tab">
+      <div class="search">
+        <input type="text" id="search-all" placeholder="Search VODs...">
+      </div>
+      <div class="vod-list" id="all-vods">
+        <div class="loading">Loading VODs...</div>
+      </div>
+    </div>
+    
+    <div class="tab-content" id="settings-tab">
+      <div class="settings-group">
+        <h3>Display Settings</h3>
+        <div class="setting">
+          <label for="panel-position">Default Panel Position</label>
+          <select id="panel-position">
+            <option value="top-right">Top Right</option>
+            <option value="top-left">Top Left</option>
+            <option value="bottom-right">Bottom Right</option>
+            <option value="bottom-left">Bottom Left</option>
+          </select>
+        </div>
+        <div class="setting">
+          <label>
+            <input type="checkbox" id="auto-hide">
+            Auto-hide panel after adding timestamp
+          </label>
+        </div>
+      </div>
+      
+      <div class="settings-group">
+        <h3>Data Management</h3>
+        <div class="setting">
+          <label>
+            <input type="checkbox" id="export-clipboard">
+            Copy timestamps to clipboard when exporting
+          </label>
+        </div>
+        <div class="setting">
+          <button id="export-all-btn" class="btn secondary">Export All Timestamps</button>
+          <button id="import-btn" class="btn secondary">Import Timestamps</button>
+        </div>
+        <div class="setting">
+          <button id="clear-data-btn" class="btn danger">Clear All Data</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="timestamp-details" id="timestamp-details">
+      <div class="details-header">
+        <button class="back-btn" id="back-btn">← Back</button>
+        <h2 id="details-title">Timestamps</h2>
+      </div>
+      <div class="timestamp-list" id="detail-timestamps">
+        <div class="loading">Loading timestamps...</div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="version">Version 1.0</div>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
