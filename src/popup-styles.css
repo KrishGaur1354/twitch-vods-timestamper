@@ -1,324 +1,413 @@
 /* Base styles */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: 'Inter', 'Roobert', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    background-color: #0e0e10;
-    color: #efeff1;
-    width: 400px;
-    height: 500px;
-    overflow: hidden;
-  }
-  
-  .container {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-  
-  /* Header */
-  header {
-    background-color: #18181b;
-    padding: 15px;
-    border-bottom: 1px solid #303032;
-  }
-  
-  header h1 {
-    font-size: 18px;
-    font-weight: 600;
-    color: #efeff1;
-  }
-  
-  /* Tabs */
-  .tabs {
-    display: flex;
-    background-color: #1f1f23;
-    border-bottom: 1px solid #303032;
-  }
-  
-  .tab-btn {
-    flex: 1;
-    padding: 10px;
-    background: none;
-    border: none;
-    color: #adadb8;
-    font-size: 14px;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  
-  .tab-btn:hover {
-    color: #efeff1;
-    background-color: #26262c;
-  }
-  
-  .tab-btn.active {
-    color: #efeff1;
-    border-bottom: 2px solid #9147ff;
-    background-color: #18181b;
-  }
-  
-  /* Tab content */
-  .tab-content {
-    display: none;
-    flex: 1;
-    overflow-y: auto;
-    padding: 15px;
-    background-color: #18181b;
-  }
-  
-  .tab-content.active {
-    display: block;
-  }
-  
-  /* Search */
-  .search {
-    margin-bottom: 15px;
-  }
-  
-  .search input {
-    width: 100%;
-    padding: 8px 12px;
-    background-color: #26262c;
-    border: 1px solid #3a3a3d;
-    border-radius: 4px;
-    color: #efeff1;
-    font-size: 14px;
-  }
-  
-  .search input:focus {
-    outline: none;
-    border-color: #9147ff;
-  }
-  
-  /* VOD List */
-  .vod-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .vod-item {
-    background-color: #26262c;
-    border-radius: 4px;
-    padding: 12px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-  }
-  
-  .vod-item:hover {
-    background-color: #3a3a3d;
-  }
-  
-  .vod-title {
-    font-weight: 500;
-    margin-bottom: 5px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  
-  .vod-meta {
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-    color: #adadb8;
-  }
-  
-  .vod-actions {
-    display: flex;
-    gap: 8px;
-    margin-top: 8px;
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', 'Roobert', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: #0e0e10; /* Darker background matching Twitch */
+  color: #efeff1;
+  width: 400px;
+  height: 500px;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Header */
+header {
+  background-color: #18181b;
+  padding: 16px;
+  border-bottom: 1px solid #303032;
+  display: flex;
+  align-items: center;
+}
+
+/* Add Twitch logo in header */
+header::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%239147ff"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg>');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+header h1 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #efeff1;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  background-color: #18181b;
+  border-bottom: 1px solid #303032;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 12px;
+  background: none;
+  border: none;
+  color: #adadb8;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.tab-btn:hover {
+  color: #efeff1;
+  background-color: #26262c;
+}
+
+.tab-btn.active {
+  color: #efeff1;
+  background-color: #0e0e10;
+}
+
+/* Active tab indicator */
+.tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #9147ff;
+}
+
+/* Tab content */
+.tab-content {
+  display: none;
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  background-color: #0e0e10;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* Scrollbar styling */
+.tab-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.tab-content::-webkit-scrollbar-track {
+  background: #0e0e10;
+}
+
+.tab-content::-webkit-scrollbar-thumb {
+  background: #3a3a3d;
+  border-radius: 3px;
+}
+
+.tab-content::-webkit-scrollbar-thumb:hover {
+  background: #4e4e50;
+}
+
+/* Search */
+.search {
+  margin-bottom: 16px;
+  position: relative;
+}
+
+/* Search icon */
+.search::before {
+  content: '';
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23adadb8"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>');
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.7;
+}
+
+.search input {
+  width: 100%;
+  padding: 10px 12px 10px 36px; /* Extra padding for icon */
+  background-color: #1f1f23;
+  border: 1px solid #3a3a3d;
+  border-radius: 4px;
+  color: #efeff1;
+  font-size: 14px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.search input:focus {
+  outline: none;
+  border-color: #9147ff;
+  box-shadow: 0 0 0 2px rgba(145, 71, 255, 0.2); /* Twitch purple glow */
+}
+
+/* VOD List */
+.vod-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.vod-item {
+  background-color: #18181b;
+  border-radius: 4px;
+  padding: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1px solid #26262c;
+}
+
+.vod-item:hover {
+  background-color: #1f1f23;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.vod-title {
+  font-weight: 500;
+  margin-bottom: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vod-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #adadb8;
+}
+
+.vod-meta span:first-child {
+  display: flex;
+  align-items: center;
+}
+
+/* Add calendar icon before date */
+.vod-meta span:first-child::before {
+  content: '';
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 4px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23adadb8"><path d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13zM8 15c0-1.66 1.34-3 3-3 .35 0 .69.07 1 .18V6h5v2h-3v7.03c-.02 1.64-1.35 2.97-3 2.97-1.66 0-3-1.34-3-3z"/></svg>');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+/* Add timestamp icon before timestamp count */
+.vod-meta span:last-child::before {
+  content: '';
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 4px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23adadb8"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/><path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.vod-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
 /* Empty state */
 .empty-state {
-    text-align: center;
-    padding: 30px 0;
-    color: #adadb8;
-  }
-  
-  .empty-state p {
-    margin-bottom: 15px;
-  }
-  
-  /* Loading indicator */
-  .loading {
-    text-align: center;
-    padding: 20px;
-    color: #adadb8;
-    font-style: italic;
-  }
-  
-  /* Timestamp details section */
-  .timestamp-details {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #18181b;
-    z-index: 10;
-  }
-  
-  .timestamp-details.show {
-    display: flex;
-  }
-  
-  .details-header {
-    display: flex;
-    align-items: center;
-    padding: 15px;
-    border-bottom: 1px solid #303032;
-    background-color: #1f1f23;
-  }
-  
-  .back-btn {
-    background: none;
-    border: none;
-    color: #efeff1;
-    cursor: pointer;
-    font-size: 14px;
-    margin-right: 15px;
-  }
-  
-  .details-header h2 {
-    font-size: 16px;
-    font-weight: 600;
-  }
-  
-  /* Timestamp list in details view */
-  .timestamp-list {
-    flex: 1;
-    overflow-y: auto;
-    padding: 15px;
-  }
-  
-  .timestamp-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid #303032;
-  }
-  
-  .timestamp-item:last-child {
-    border-bottom: none;
-  }
-  
-  .timestamp-info {
-    flex: 1;
-  }
-  
-  .timestamp-time {
-    font-family: monospace;
-    font-weight: 500;
-    margin-bottom: 3px;
-  }
-  
-  .timestamp-title {
-    color: #adadb8;
-    font-size: 14px;
-  }
-  
-  .timestamp-actions {
-    display: flex;
-    gap: 8px;
-  }
-  
-  /* Settings styles */
-  .settings-group {
-    margin-bottom: 20px;
-  }
-  
-  .settings-group h3 {
-    font-size: 16px;
-    margin-bottom: 10px;
-    color: #dedee3;
-  }
-  
-  .setting {
-    margin-bottom: 12px;
-  }
-  
-  .setting label {
-    display: block;
-    margin-bottom: 5px;
-    color: #adadb8;
-  }
-  
-  .setting select {
-    width: 100%;
-    padding: 8px;
-    background-color: #26262c;
-    border: 1px solid #3a3a3d;
-    border-radius: 4px;
-    color: #efeff1;
-  }
-  
-  .setting select:focus {
-    outline: none;
-    border-color: #9147ff;
-  }
-  
-  /* Buttons */
-  .btn {
-    background-color: #3a3a3d;
-    color: #efeff1;
-    border: none;
-    border-radius: 4px;
-    padding: 8px 12px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-  }
-  
-  .btn:hover {
-    background-color: #464649;
-  }
-  
-  .btn.primary {
-    background-color: #9147ff;
-  }
-  
-  .btn.primary:hover {
-    background-color: #772ce8;
-  }
-  
-  .btn.secondary {
-    background-color: #3a3a3d;
-  }
-  
-  .btn.secondary:hover {
-    background-color: #464649;
-  }
-  
-  .btn.danger {
-    background-color: #eb0400;
-  }
-  
-  .btn.danger:hover {
-    background-color: #c30e00;
-  }
-  
-  /* Footer */
-  footer {
-    padding: 10px 15px;
-    border-top: 1px solid #303032;
-    font-size: 12px;
-    color: #adadb8;
-    text-align: center;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 400px) {
-    body {
-      width: 100%;
-    }
-  }
+  text-align: center;
+  padding: 40px 20px;
+  color: #adadb8;
+}
+
+/* Add empty state icon */
+.empty-state::before {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 16px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23adadb8"><path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zM8 15c0-1.66 1.34-3 3-3 .35 0 .69.07 1 .18V6h5v2h-3v7.03c-.02 1.64-1.35 2.97-3 2.97-1.66 0-3-1.34-3-3z"/></svg>');
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.5;
+}
+
+.empty-state p {
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+/* Loading indicator */
+.loading {
+  text-align: center;
+  padding: 30px;
+  color: #adadb8;
+  font-style: italic;
+}
+
+/* Animated loading spinner */
+.loading::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 32px;
+  margin: 0 auto 12px;
+  border: 3px solid #3a3a3d;
+  border-radius: 50%;
+  border-top-color: #9147ff;
+  animation: spinner 0.8s linear infinite;
+}
+
+@keyframes spinner {
+  to {transform: rotate(360deg);}
+}
+
+/* Timestamp details section */
+.timestamp-details {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0e0e10;
+  z-index: 10;
+}
+
+.timestamp-details.show {
+  display: flex;
+}
+
+.details-header {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid #303032;
+  background-color: #18181b;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  color: #efeff1;
+  cursor: pointer;
+  font-size: 14px;
+  margin-right: 16px;
+  display: flex;
+  align-items: center;
+}
+
+/* Add back arrow icon */
+.back-btn::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23efeff1"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.details-header h2 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* Timestamp list in details view */
+.timestamp-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+}
+
+.timestamp-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  border-bottom: 1px solid #26262c;
+  background-color: #18181b;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  transition: all 0.2s;
+}
+
+.timestamp-item:hover {
+  background-color: #1f1f23;
+  transform: translateY(-1px);
+}
+
+.timestamp-item:last-child {
+  border-bottom: none;
+}
+
+.timestamp-info {
+  flex: 1;
+}
+
+.timestamp-time {
+  font-family: monospace;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #efeff1;
+  display: flex;
+  align-items: center;
+}
+
+/* Add clock icon before timestamp */
+.timestamp-time::before {
+  content: '';
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-right: 6px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%239147ff"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/><path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.timestamp-title {
+  color: #adadb8;
+  font-size: 14px;
+}
+
+.timestamp-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* Settings styles */
+.settings-group {
+  margin-bottom: 24px;
+  background-color: #18181b;
+  padding: 16px;
+  border-radius: 4px;
+  border: 1px solid #26262c;
+}
+
+.settings-group h3 {
+  font-size: 16px;
+  margin-bottom: 12px;
+  color: #dedee3;
+  display: flex;
+  align-items: center;
+}
