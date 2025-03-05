@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "Twitch VOD Timestamper",
+  "version": "1.0.0",
+  "description": "Add and manage timestamps for Twitch VODs with descriptions and easy navigation.",
+  "icons": {
+    "48": "icons/ascii-art-48.png",
+    "128": "icons/ascii-art-128.png"
+  },
+  "permissions": [
+    "storage",
+    "clipboardWrite",
+    "contextMenus"
+  ],
+  "host_permissions": [
+    "*://*.twitch.tv/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.twitch.tv/videos/*"],
+      "css": ["content-styles.css"],
+      "js": ["content.js"]
+    }
+  ],
+  "action": {
+    "default_icon": {
+      "48": "icons/ascii-art-48.png",
+      "128": "icons/ascii-art-128.png"
+    }
+  }
+} 

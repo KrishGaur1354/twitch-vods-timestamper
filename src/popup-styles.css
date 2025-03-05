@@ -10,13 +10,15 @@ body {
   background-color: #0e0e10; /* Darker background matching Twitch */
   color: #efeff1;
   width: 400px;
-  height: 500px;
-  overflow: hidden;
+  min-height: 300px;
+  max-height: 600px;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
+  padding: 16px;
+  box-sizing: border-box;
   height: 100%;
 }
 
@@ -92,7 +94,9 @@ header h1 {
 .tab-content {
   display: none;
   flex: 1;
+  max-height: calc(100vh - 120px);
   overflow-y: auto;
+  overflow-x: hidden;
   padding: 16px;
   background-color: #0e0e10;
 }
@@ -162,6 +166,9 @@ header h1 {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  max-height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .vod-item {

@@ -14,15 +14,15 @@ A browser extension that lets you create, manage, and share timestamps from Twit
 
 ## 📋 Installation
 
-### From Stores (Coming Soon)
-- Microsoft Edge: Coming first!
-- Chrome and Firefox: Coming later
+### From Stores
+- Microsoft Edge: Available in the Edge Add-ons store
+- Other browsers: Coming later
 
 ### Manual Installation (Development)
 
-#### Chrome/Edge
+#### Microsoft Edge
 1. Clone this repository: `git clone https://github.com/KrishGaur1354/twitch-vods-timestamper.git`
-2. Go to `chrome://extensions` or `edge://extensions`
+2. Go to `edge://extensions`
 3. Enable "Developer mode"
 4. Click "Load unpacked"
 5. Select the cloned repository folder
