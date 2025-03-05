@@ -15,7 +15,8 @@ A browser extension that lets you create, manage, and share timestamps from Twit
 ## 📋 Installation
 
 ### From Stores
-- Microsoft Edge: Available in the Edge Add-ons store
+- Microsoft Edge: Available(In-Review)
+- Firefox Addons: [Available](https://addons.mozilla.org/en-US/firefox/addon/twitch-vod-timestamper/)
 - Other browsers: Coming later
 
 ### Manual Installation (Development)
