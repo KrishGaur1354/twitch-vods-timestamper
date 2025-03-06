@@ -169,6 +169,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             text-shadow: 0 0 2px #00ff00;
+            margin-right: 10px;
         }
 
         .cta-button:hover {
@@ -178,6 +179,77 @@
 
         .cta-button:active {
             border-style: inset;
+        }
+
+        .sponsor-button {
+            display: inline-block;
+            background-color: #5a318d;
+            color: #fff;
+            padding: 8px 16px;
+            text-decoration: none;
+            font-weight: bold;
+            border: 2px outset #7641b7;
+            cursor: pointer;
+            margin-top: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 0 2px #fff;
+        }
+
+        .sponsor-button:hover {
+            background-color: #7641b7;
+            border-color: #9a67db;
+        }
+
+        .sponsor-button:active {
+            border-style: inset;
+        }
+
+        .browser-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .browser-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #004400;
+            color: #00ff00;
+            padding: 8px 16px;
+            text-decoration: none;
+            font-weight: bold;
+            border: 2px outset #006600;
+            cursor: pointer;
+            margin-top: 10px;
+            letter-spacing: 1px;
+            text-shadow: 0 0 2px #00ff00;
+        }
+
+        .browser-button:hover {
+            background-color: #006600;
+            border-color: #008800;
+        }
+
+        .browser-icon {
+            margin-right: 8px;
+            font-size: 18px;
+        }
+
+        .edge-icon::before {
+            content: "E";
+            color: #0078d7;
+        }
+
+        .firefox-icon::before {
+            content: "F";
+            color: #ff9400;
+        }
+
+        .chrome-icon::before {
+            content: "C";
+            color: #4285f4;
         }
 
         footer {
@@ -331,13 +403,15 @@
                 <div class="logo"><span class="justin-logo">J!</span>Twitch VOD Timestamp</div>
                 <nav>
                     <a href="#">Home</a>
+                    <a href="#docs">Docs</a>
+                    <a href="#faq">FAQ</a>
                     <a href="https://github.com/KrishGaur1354/twitch-vods-timestamper">Github</a>
                 </nav>
             </div>
         </header>
 
         <div class="marquee">
-            <span>Welcome to Twitch VOD Timestamp Tool v1.0.2 -- Coming soon to Microsoft Edge and later to Chrome and Firefox -- Made with &lt;3 for the Twitch community -- The best way to timestamp your favorite streamers' moments!</span>
+            <span>Welcome to Twitch VOD Timestamp Tool v1.0.2 -- Now available for Microsoft Edge, Chrome, and Firefox -- Made with &lt;3 for the Twitch community -- The best way to timestamp your favorite streamers' moments!</span>
         </div>
 
         <div class="container">
@@ -474,15 +548,17 @@
                 </div>
 
                 <div class="feature-box">
-                    <div class="feature-title">$ grep "Installation" README.md <span class="blink">_</span></div>
+                    <div class="feature-title">$ grep "Download" README.md <span class="blink">_</span></div>
                     <div class="terminal">
                         <div class="response">
                             ## Installation<br><br>
                             
-                            ```bash<br>
-                            # Using git<br>
-                            git clone https://github.com/KrishGaur1354/twitch-vods-timestamper.git<br><br>
-                            ```
+                            Install the Twitch VOD Timestamper extension on your preferred browser:
+                        </div>
+                        <div class="browser-buttons">
+                            <a href="dist/twitch-timestamper-edge.zip" class="browser-button"><span class="browser-icon edge-icon"></span>Microsoft Edge</a>
+                            <a href="dist/twitch-timestamper-firefox.zip" class="browser-button"><span class="browser-icon firefox-icon"></span>Firefox</a> 
+                            <a href="dist/twitch-timestamper-chrome.zip" class="browser-button"><span class="browser-icon chrome-icon"></span>Chrome</a>
                         </div>
                     </div>
                 </div>
@@ -510,15 +586,16 @@
                 </div>
 
                 <div>
-                    <!-- <a href="#" class="cta-button">Download v1.0.0</a> -->
                     <a href="https://github.com/KrishGaur1354/twitch-vods-timestamper" class="cta-button">View on GitHub</a>
+                    <a href="https://github.com/sponsors/KrishGaur1354" class="sponsor-button">❤️ Sponsor</a>
                 </div>
             </div>
         </div>
 
         <footer>
-            Twitch VOD Timestamp | Version 1.0.0 | MIT License | © 2025<br>
+            Twitch VOD Timestamp | Version 1.0.2 | MIT License | © 2024<br>
             <span class="jtv-accent">root@vod-timestamp:~$ echo "Made with &lt;3 for the Twitch community"</span><br>
+            <a href="https://github.com/sponsors/KrishGaur1354" style="color: #ff6600; text-decoration: none;">Support this project on GitHub Sponsors</a><br>
             <small>Best viewed in Internet Explorer 6.0 or Netscape Navigator 7.0</small>
         </footer>
     </div>
